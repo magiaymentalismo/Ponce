@@ -366,7 +366,7 @@
           </div>
           <div class="item-right">
             <div class="chip ${chip}">
-              ${active === "Escondido" ? `${r.vendidas} / ${r.cap} · Quedan ${r.stock}` : `Vendidas: ${r.vendidas}`}
+              ${r.cap ? `${r.vendidas} / ${r.cap}` : `Vendidas: ${r.vendidas}`}
             </div>
             ${abonoHTML}
           </div>`;
