@@ -13,9 +13,9 @@ import shutil
 
 # ===================== CONFIG ===================== #
 EVENTS = {
-    "Escondido": "https://www.dinaticket.com/es/provider/20073/event/4919204",
-    "Escalera": "https://www.dinaticket.com/es/provider/10402/event/4923185",
-    "Oniria": "https://www.dinaticket.com/es/provider/20073/event/4940326",
+    "ALGUIEN DIJO ¿SUPERPODERES?": "https://www.dinaticket.com/es/provider/10402/event/4860889",
+    "VA DE MAGIA": "https://www.dinaticket.com/es/provider/10402/event/4920311",
+    "Fantasia": "https://www.dinaticket.com/es/provider/10402/event/4943381",
 }
 
 FEVER_URLS = {
