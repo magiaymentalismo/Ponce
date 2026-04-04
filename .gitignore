@@ -1,0 +1,10 @@
+docs/index.local.backup.html
+docs/index.html
+venv/
+
+.DS_Store
+venv/
+.venv/
+node_modules/
+
+state.json

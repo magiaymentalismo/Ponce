@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cartelera — Magia & Teatro</title>
+  <link rel="manifest" href="manifest.json?v=20251201">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    :root {
+      --bg-deep: #000000;
+      --glass-surface: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-highlight: rgba(255, 255, 255, 0.2);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.6);
+      --accent-gold: #ffd700;
+      --accent-green: #34c759;
+      --accent-orange: #ff9f0a;
+      --accent-red: #ff453a;
+
+      --blur-md: 20px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-full: 999px;
+
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      --safe-top: env(safe-area-inset-top, 20px);
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(60, 20, 100, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 80, 100, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(40, 40, 40, 0.5) 0%, transparent 60%);
+      background-attachment: fixed;
+      margin: 0;
+      color: var(--text-primary);
+      font-family: var(--font-stack);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      padding-bottom: 40px;
+      padding-top: calc(var(--safe-top) + 60px);
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Dynamic Island */
+    .dynamic-island-container {
+      position: fixed;
+      top: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .dynamic-island {
+      pointer-events: auto;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 30px;
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-width: 90%;
+    }
+
+    .island-title {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .island-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      padding-left: 12px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      justify-content: center;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      background: var(--glass-surface);
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+      backdrop-filter: blur(var(--blur-md));
+      -webkit-backdrop-filter: blur(var(--blur-md));
+    }
+
+    .tab.active {
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+      transform: scale(1.02);
+    }
+
+    /* Panel */
+    .panel {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Subtabs */
+    .subtabs {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      margin-bottom: 24px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .subtab {
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .subtab.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    /* Items */
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .month {
+      margin: 32px 0 12px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      text-transform: capitalize;
+      padding-left: 8px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      transition: 0.2s;
+    }
+
+    .item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .item-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-date {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .item-time {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .chip.green {
+      background: rgba(52, 199, 89, 0.2);
+      color: var(--accent-green);
+    }
+
+    .chip.gold {
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--accent-gold);
+    }
+
+    .chip.gray {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .chip.sold {
+      background: rgba(255, 69, 58, 0.15);
+      color: var(--accent-red);
+      text-decoration: line-through;
+    }
+
+    .abono-chip {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dynamic-island-container">
+    <div class="dynamic-island">
+      <div class="island-title">Cartelera</div>
+      <div class="island-meta" id="meta"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div id="tabs" class="tabs"></div>
+
+    <div class="panel">
+
+      <div id="list" class="list"></div>
+    </div>
+  </div>
+
+  <!-- PAYLOAD -->
+  <script id="PAYLOAD" type="application/json">{{PAYLOAD_JSON}}</script>
+
+  <script>
+    const payload = JSON.parse(document.getElementById("PAYLOAD").textContent);
+    const eventos = payload.eventos || {};
+    let active = Object.keys(eventos)[0] || null;
+    let subMode = "proximas";
+
+    document.getElementById("meta").textContent =
+      new Date(payload.generated_at).toLocaleString("es-ES", {
+        hour: '2-digit', minute: '2-digit'
+      });
+
+    /* Tabs principales */
+    const tabsEl = document.getElementById("tabs");
+    for (const sala of Object.keys(eventos)) {
+      const ev = eventos[sala];
+      const total = (ev.proximas?.table?.rows?.length || 0);
+      const b = document.createElement("button");
+      b.textContent = `${sala} (${total})`;
+      b.dataset.tab = sala;
+      b.className = "tab" + (sala === active ? " active" : "");
+      b.onclick = () => { active = sala; updateTabs(); render(); };
+      tabsEl.appendChild(b);
+    }
+
+    function updateTabs() {
+      document.querySelectorAll(".tab").forEach(t => {
+        t.classList.toggle("active", t.dataset.tab === active);
+      });
+    }
+
+
+
+    const DAYS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+    function dayName(f) {
+      return DAYS[new Date(f + "T00:00:00").getDay()];
+    }
+
+    function getRows() {
+      const ev = eventos[active];
+      const sec = ev[subMode];
+      return (sec?.table?.rows) || [];
+    }
+
+    function render() {
+      const cont = document.getElementById("list");
+      cont.innerHTML = "";
+      let rows = getRows();
+      rows = rows.map(r => ({
+        fecha_label: r[0], hora: r[1],
+        vendidas: r[2], fecha_iso: r[3],
+        cap: r[4], stock: r[5], abono: r[6]
+      }));
+
+      rows.sort((a, b) => (a.fecha_iso + a.hora).localeCompare(b.fecha_iso + b.hora));
+
+      let currentMonth = null;
+      for (const r of rows) {
+        const d = new Date(r.fecha_iso + "T00:00:00");
+        const key = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+        if (key !== currentMonth) {
+          currentMonth = key;
+          const h = document.createElement("h3");
+          h.className = "month";
+          h.textContent = d.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+          cont.appendChild(h);
+        }
+
+        const chip = r.stock === 0 ? "sold" :
+          r.vendidas >= 10 ? "gold" :
+            r.vendidas >= 1 ? "green" : "gray";
+
+        let abonoHTML = "";
+        if (active === "Escondido" && r.abono) {
+          if (r.abono === "venta") abonoHTML = `<div class="chip green abono-chip">Abono: Disponible</div>`;
+          if (r.abono === "agotado") abonoHTML = `<div class="chip sold abono-chip">Abono: Agotado</div>`;
+        }
+
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div class="item-left">
+            <div class="item-date">${r.fecha_label} <span style="opacity:0.6">(${dayName(r.fecha_iso)})</span></div>
+            <div class="item-time">${r.hora} h</div>
+          </div>
+          <div class="item-right">
+            <div class="chip ${chip}">
+              ${active === "Escondido" ? `${r.vendidas} / ${r.cap} · Quedan ${r.stock}` : `Vendidas: ${r.vendidas}`}
+            </div>
+            ${abonoHTML}
+          </div>`;
+        cont.appendChild(div);
+      }
+    }
+
+    render();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js?v=20251201').then(r => console.log('SW Registered')).catch(console.error);
+    }
+  </script>
+</body>
+
+</html>
