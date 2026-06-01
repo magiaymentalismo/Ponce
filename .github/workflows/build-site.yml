@@ -2,8 +2,8 @@ name: build-site
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 minutes (UTC)
-  workflow_dispatch: {}       # manual trigger
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
 
 concurrency:
   group: build-site
@@ -15,7 +15,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -28,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # use your repo requirements to match local env
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install requests beautifulsoup4; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install requests beautifulsoup4 playwright; fi
+          python -m playwright install --with-deps chromium
 
       - name: Generate dashboard (docs/index.html + docs/schedule.json)
         run: |
@@ -45,7 +46,6 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Add generated artifacts (force-add in case of .gitignore)
           git add -f docs/index.html docs/schedule.json docs/manifest.json docs/sw.js
 
           if git diff --cached --quiet; then
