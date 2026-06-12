@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T08:42:14.743364+02:00",
+  "generated_at": "2026-06-12T12:59:36.949071+02:00",
   "eventos": {
     "ALGUIEN DIJO ¿SUPERPODERES?": {
       "table": {
@@ -43,62 +43,52 @@
           "Abono",
           "Fever"
         ],
+        "rows": []
+      },
+      "proximas": {
+        "table": {
+          "headers": [
+            "Fecha",
+            "Hora",
+            "Vendidas",
+            "FechaISO",
+            "Capacidad",
+            "Stock",
+            "Abono",
+            "Fever"
+          ],
+          "rows": []
+        }
+      }
+    },
+    "Fantasia": {
+      "table": {
+        "headers": [
+          "Fecha",
+          "Hora",
+          "Vendidas",
+          "FechaISO",
+          "Capacidad",
+          "Stock",
+          "Abono",
+          "Fever"
+        ],
         "rows": [
           [
-            "13 Jun 2026",
-            "18:00",
-            14,
-            "2026-06-13",
-            51,
-            37,
-            null,
-            null
-          ],
-          [
-            "14 Jun 2026",
-            "16:30",
-            0,
-            "2026-06-14",
-            51,
-            51,
-            null,
-            null
-          ],
-          [
-            "20 Jun 2026",
-            "18:00",
-            10,
-            "2026-06-20",
-            51,
-            41,
-            null,
-            null
-          ],
-          [
             "21 Jun 2026",
-            "16:30",
-            0,
+            "11:30",
+            2,
             "2026-06-21",
             51,
-            51,
+            49,
             null,
             null
           ],
           [
             "27 Jun 2026",
-            "18:00",
+            "11:30",
             0,
             "2026-06-27",
-            51,
-            51,
-            null,
-            null
-          ],
-          [
-            "28 Jun 2026",
-            "16:30",
-            0,
-            "2026-06-28",
             51,
             51,
             null,
@@ -120,96 +110,26 @@
           ],
           "rows": [
             [
-              "13 Jun 2026",
-              "18:00",
-              14,
-              "2026-06-13",
-              51,
-              37,
-              null,
-              null
-            ],
-            [
-              "14 Jun 2026",
-              "16:30",
-              0,
-              "2026-06-14",
-              51,
-              51,
-              null,
-              null
-            ],
-            [
-              "20 Jun 2026",
-              "18:00",
-              10,
-              "2026-06-20",
-              51,
-              41,
-              null,
-              null
-            ],
-            [
               "21 Jun 2026",
-              "16:30",
-              0,
+              "11:30",
+              2,
               "2026-06-21",
               51,
-              51,
+              49,
               null,
               null
             ],
             [
               "27 Jun 2026",
-              "18:00",
+              "11:30",
               0,
               "2026-06-27",
               51,
               51,
               null,
               null
-            ],
-            [
-              "28 Jun 2026",
-              "16:30",
-              0,
-              "2026-06-28",
-              51,
-              51,
-              null,
-              null
             ]
           ]
-        }
-      }
-    },
-    "Fantasia": {
-      "table": {
-        "headers": [
-          "Fecha",
-          "Hora",
-          "Vendidas",
-          "FechaISO",
-          "Capacidad",
-          "Stock",
-          "Abono",
-          "Fever"
-        ],
-        "rows": []
-      },
-      "proximas": {
-        "table": {
-          "headers": [
-            "Fecha",
-            "Hora",
-            "Vendidas",
-            "FechaISO",
-            "Capacidad",
-            "Stock",
-            "Abono",
-            "Fever"
-          ],
-          "rows": []
         }
       }
     }
