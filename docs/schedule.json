@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T14:49:42.869517+02:00",
+  "generated_at": "2026-06-18T18:26:53.468053+02:00",
   "eventos": {
     "ALGUIEN DIJO ¿SUPERPODERES?": {
       "table": {
@@ -27,10 +27,10 @@
           [
             "21 Jun 2026",
             "12:30",
-            null,
+            4,
             "2026-06-21",
             51,
-            null,
+            47,
             null,
             null
           ],
@@ -72,10 +72,10 @@
             [
               "21 Jun 2026",
               "12:30",
-              null,
+              4,
               "2026-06-21",
               51,
-              null,
+              47,
               null,
               null
             ],
@@ -105,42 +105,52 @@
           "Abono",
           "Fever"
         ],
+        "rows": []
+      },
+      "proximas": {
+        "table": {
+          "headers": [
+            "Fecha",
+            "Hora",
+            "Vendidas",
+            "FechaISO",
+            "Capacidad",
+            "Stock",
+            "Abono",
+            "Fever"
+          ],
+          "rows": []
+        }
+      }
+    },
+    "Fantasia": {
+      "table": {
+        "headers": [
+          "Fecha",
+          "Hora",
+          "Vendidas",
+          "FechaISO",
+          "Capacidad",
+          "Stock",
+          "Abono",
+          "Fever"
+        ],
         "rows": [
           [
-            "20 Jun 2026",
-            "18:00",
-            22,
-            "2026-06-20",
-            51,
-            29,
-            null,
-            null
-          ],
-          [
             "21 Jun 2026",
-            "16:30",
-            0,
+            "11:30",
+            9,
             "2026-06-21",
             51,
-            51,
+            42,
             null,
             null
           ],
           [
             "27 Jun 2026",
-            "18:00",
+            "11:30",
             0,
             "2026-06-27",
-            51,
-            51,
-            null,
-            null
-          ],
-          [
-            "28 Jun 2026",
-            "16:30",
-            0,
-            "2026-06-28",
             51,
             51,
             null,
@@ -162,76 +172,26 @@
           ],
           "rows": [
             [
-              "20 Jun 2026",
-              "18:00",
-              22,
-              "2026-06-20",
-              51,
-              29,
-              null,
-              null
-            ],
-            [
               "21 Jun 2026",
-              "16:30",
-              0,
+              "11:30",
+              9,
               "2026-06-21",
               51,
-              51,
+              42,
               null,
               null
             ],
             [
               "27 Jun 2026",
-              "18:00",
+              "11:30",
               0,
               "2026-06-27",
               51,
               51,
               null,
               null
-            ],
-            [
-              "28 Jun 2026",
-              "16:30",
-              0,
-              "2026-06-28",
-              51,
-              51,
-              null,
-              null
             ]
           ]
-        }
-      }
-    },
-    "Fantasia": {
-      "table": {
-        "headers": [
-          "Fecha",
-          "Hora",
-          "Vendidas",
-          "FechaISO",
-          "Capacidad",
-          "Stock",
-          "Abono",
-          "Fever"
-        ],
-        "rows": []
-      },
-      "proximas": {
-        "table": {
-          "headers": [
-            "Fecha",
-            "Hora",
-            "Vendidas",
-            "FechaISO",
-            "Capacidad",
-            "Stock",
-            "Abono",
-            "Fever"
-          ],
-          "rows": []
         }
       }
     }
