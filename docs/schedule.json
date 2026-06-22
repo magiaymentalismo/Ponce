@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T20:11:18.621684+02:00",
+  "generated_at": "2026-06-22T23:20:14.382023+02:00",
   "eventos": {
     "ALGUIEN DIJO ¿SUPERPODERES?": {
       "table": {
@@ -95,7 +95,18 @@
           "Abono",
           "Fever"
         ],
-        "rows": []
+        "rows": [
+          [
+            "27 Jun 2026",
+            "11:30",
+            0,
+            "2026-06-27",
+            51,
+            51,
+            null,
+            null
+          ]
+        ]
       },
       "proximas": {
         "table": {
@@ -109,7 +120,18 @@
             "Abono",
             "Fever"
           ],
-          "rows": []
+          "rows": [
+            [
+              "27 Jun 2026",
+              "11:30",
+              0,
+              "2026-06-27",
+              51,
+              51,
+              null,
+              null
+            ]
+          ]
         }
       }
     }
