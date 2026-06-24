@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T08:46:22.411876+02:00",
+  "generated_at": "2026-06-24T12:21:24.913962+02:00",
   "eventos": {
     "ALGUIEN DIJO ¿SUPERPODERES?": {
       "table": {
@@ -97,10 +97,10 @@
           [
             "23 Jul 2026",
             "19:00",
-            0,
+            null,
             "2026-07-23",
-            51,
-            51,
+            null,
+            null,
             null,
             null
           ],
@@ -212,10 +212,10 @@
             [
               "23 Jul 2026",
               "19:00",
-              0,
+              null,
               "2026-07-23",
-              51,
-              51,
+              null,
+              null,
               null,
               null
             ],
